@@ -3,11 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    docker.image('maven:3.9.2-openjdk-17').inside {
-                        sh 'mvn clean install'
-                    }
-                }
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
